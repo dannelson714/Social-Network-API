@@ -43,9 +43,9 @@ module.exports = {
       { runValidators: true, new: true }
     )
       .then((user) =>
-        !application
+        !user
           ? res.status(404).json({ message: 'No user with this id!' })
-          : res.json(application)
+          : res.json(user)
       )
       .catch((err) => {
         console.log(err);
@@ -59,10 +59,10 @@ module.exports = {
       { $addToSet: { friends: req.params.friendId } },
       { runValidators: true, new: true }
     )
-      .then((application) =>
-        !application
+      .then((user) =>
+        !user
           ? res.status(404).json({ message: 'No user with this id!' })
-          : res.json(application)
+          : res.json(user)
       )
       .catch((err) => res.status(500).json(err));
   },
@@ -73,10 +73,10 @@ module.exports = {
       { $pull: { friends: req.params.friendId } },
       { runValidators: true, new: true }
     )
-      .then((application) =>
-        !application
+      .then((user) =>
+        !user
           ? res.status(404).json({ message: 'No user with this id!' })
-          : res.json(application)
+          : res.json(user)
       )
       .catch((err) => res.status(500).json(err));
   },
